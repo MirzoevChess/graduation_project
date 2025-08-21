@@ -1,0 +1,68 @@
+.toggleTheme {
+  --thumb-x: 0;
+  --track-bg: #8b8b8b;
+  --thumb-bg: #fff;
+
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+
+  &.isDark {
+    --thumb-x: 28px;
+    --track-bg: #fff;
+    --thumb-bg: #8b8b8b;
+  }
+
+  &:focus-visible .toggleTrack {
+    outline: 2px solid #6f6f6f;
+    outline-offset: 2px;
+  }
+
+  &:hover .toggleTrack {
+    filter: brightness(1.03);
+  }
+
+  &:active .toggleThumb {
+    transform: translateX(var(--thumb-x)) scale(0.98);
+  }
+}
+
+.toggleTrack {
+  position: relative;
+  display: inline-block;
+  width: 3.75rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background: var(--track-bg);
+  transition: background-color 200ms ease, filter 150ms ease;
+}
+
+.toggleIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.sun {
+    left: 0.5rem;
+  }
+
+  &.moon {
+    right: 0.5rem;
+  }
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--thumb-bg);
+  transform: translateX(var(--thumb-x));
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 220ms ease;
+}
