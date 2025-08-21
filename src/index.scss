@@ -1,0 +1,18 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  &[data-theme="dark"] {
+    --bg-color: #424436;
+    --text-color: #ffffff;
+    --product-card-bg: #383a2c;
+    --product-card-border: #8b8b8b;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
