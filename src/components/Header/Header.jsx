@@ -18,8 +18,8 @@ const Header = () => {
         <Navbar />
       </div>
       <div className={styles.headerActions}>
-        <HeartIcon />
-        <CartIcon />
+        <HeartIcon fill="none" stroke="var(--text-color)" />
+        <CartIcon fill="none" stroke="var(--text-color)"/>
       </div>
     </div>
   );

@@ -1,14 +1,17 @@
-import React, { lazy } from "react";
+import { lazy } from "react";
 
 const Home = lazy(() => import("../pages/Home/Home"));
-const Categories = lazy(() => import("../pages/Categories/Categories"));
+const AllCategories = lazy(() => import("../pages/AllCategories/AllCategories"));
 const AllProducts = lazy(() => import("../pages/AllProducts/AllProducts"));
 const AllSales = lazy(() => import("../pages/AllSales/AllSales"));
+const CategoryPage = lazy(() => import("../pages/AllCategories/CategoryPage/CategoryPage"));
 
-export const routes = [
+
+export const appRoutes = [
   { id: 1, path: "/", element: <Home /> },
-  { id: 2, path: "/categories", element: <Categories /> },
-  { id: 3, path: "/all-products", element: <AllProducts /> },
-  { id: 4, path: "/all-sales", element: <AllSales /> },
-  { id: 5, path: "*", element: "404" }
+  { id: 2, path: "/categories", element: <AllCategories /> },
+  { id: 3, path: "/categories/:categoryId", element: <CategoryPage /> },
+  { id: 4, path: "/all-products", element: <AllProducts /> },
+  { id: 5, path: "/all-sales", element: <AllSales /> },
+  { id: 6, path: "*", element: "404" }
 ];

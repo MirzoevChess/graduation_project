@@ -4,6 +4,7 @@ import { useCategories } from "../../Hooks/useCategories";
 import st from "./CategoriesSection.module.scss";
 
 const CategoriesSection = () => {
+  
   const { visibleCategories, show, handleLoad, loading, error } = useCategories(4);
 
   if (error) return <p>Error: {error}</p>;

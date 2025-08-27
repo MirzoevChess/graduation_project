@@ -1,8 +1,8 @@
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { useCategories } from "../../Hooks/useCategories";
-import styles from "./Categories.module.scss";
+import styles from "./AllCategories.module.scss";
 
-const Categories = () => {
+const AllCategories = () => {
   const { visibleCategories, show, handleLoad, loading, error } =
     useCategories();
 
@@ -14,21 +14,16 @@ const Categories = () => {
         <h2>Categories</h2>
       </div>
       <div className={styles.itemsList}>
-      {visibleCategories.length
-        ? visibleCategories.map((cat) => (
-            <div className={styles.item}>
-              <CategoryCard
-                key={cat.id}
-                category={cat}
-                onLoad={handleLoad}
-                show={show}
-              />
-            </div>
-          ))
-        : loading}
-    </div>
+        {visibleCategories.length
+          ? visibleCategories.map((cat) => (
+              <div className={styles.item} key={cat.id}>
+                <CategoryCard category={cat} onLoad={handleLoad} show={show} />
+              </div>
+            ))
+          : loading}
+      </div>
     </div>
   );
 };
 
-export default Categories;
+export default AllCategories;

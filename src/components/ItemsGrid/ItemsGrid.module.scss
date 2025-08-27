@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  padding: 0 2.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  .title {
+    width: 100%;
+
+    h2 {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+  }
+
+  .productsActions {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .priceFilter {
+      color: var(--text-color);
+    }
+    .isDiscount {
+      color: var(--text-color);
+    }
+    .sort {
+      color: var(--text-color);
+    }
+  }
+
+  .productsList {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: center;
+  }
+}
