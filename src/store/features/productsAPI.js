@@ -19,6 +19,13 @@ export const productsApi = createApi({
     }),
     getProductsByCategory: builder.query({
       query: (categoryId) => `/categories/${categoryId}`,
+      transformResponse: (response) => ({
+        category: response.category,
+        products: response.data.map((product) => ({
+          ...product,
+          fullImageUrl: `${API_URL}${product.image}`,
+        })),
+      }),
     }),
   }),
 });

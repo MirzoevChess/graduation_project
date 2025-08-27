@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useGetProductsByCategoryQuery } from "../../store/features/productsAPI";
 import styles from "./Breadcrumbs.module.scss";
 
 const formatCrumb = (crumb) => {
@@ -14,18 +15,40 @@ const Breadcrumbs = () => {
 
   let currentLink = "";
 
-  const crumbs = location.pathname
-    .split("/")
-    .filter((crumb) => crumb !== "")
-    .map((crumb) => {
-      currentLink += `/${crumb}`;
+  const pathSegments = location.pathname.split("/").filter(Boolean);
+  const categoryId = pathSegments[1];
 
-      return (
-        <div className={styles.crumb} key={crumb}>
-          <Link to={currentLink}>{formatCrumb(crumb)}</Link>
-        </div>
-      );
-    });
+  const { data: categoryData, isLoading } = useGetProductsByCategoryQuery(
+    categoryId,
+    {
+      skip: !categoryId,
+    }
+  );
+
+  const crumbs = pathSegments.map((crumb, index) => {
+    currentLink += `/${crumb}`;
+
+    const isCategoryId = index === 1;
+    let crumbName;
+
+    if (isCategoryId) {
+      if (isLoading) {
+        crumbName = <span className={styles.skeletonCrumb}></span>;
+      } else if (categoryData?.category) {
+        crumbName = categoryData.category.title;
+      } else {
+        crumbName = crumb;
+      }
+    } else {
+      crumbName = formatCrumb(crumb);
+    }
+
+    return (
+      <div className={styles.crumb} key={crumb}>
+        <Link to={currentLink}>{crumbName}</Link>
+      </div>
+    );
+  });
 
   const homeCrumb = (
     <div
@@ -34,7 +57,7 @@ const Breadcrumbs = () => {
       }`}
       key="home"
     >
-      <Link to="/">{`Main Page`}</Link>
+      <Link to="/">Main Page</Link>
     </div>
   );
 
