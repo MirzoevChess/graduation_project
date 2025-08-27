@@ -2,8 +2,8 @@ import { useGetAllProductsQuery } from "../../store/features/productsAPI";
 import ItemsGrid from "../../components/ItemsGrid/ItemsGrid";
 
 const AllProducts = () => {
-  const { data: products, isLoading, isError } = useGetAllProductsQuery();
-  
+  const { data:products, isLoading, isError } = useGetAllProductsQuery();
+
   return (
     <ItemsGrid
       title="All Products"

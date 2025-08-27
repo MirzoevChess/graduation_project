@@ -25,6 +25,14 @@
     &.inactive {
       color: #8b8b8b;
     }
+    .skeletonCrumb {
+      display: inline-block;
+      width: 80px;
+      height: 1rem;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      animation: shimmer 1.2s infinite linear;
+    }
   }
   .separator {
     width: 1rem;

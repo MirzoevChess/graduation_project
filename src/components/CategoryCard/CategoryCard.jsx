@@ -3,7 +3,7 @@ import st from "./CategoryCard.module.scss";
 
 const CategoryCard = ({ category, onLoad, show }) => {
   
-  const categoryPath = `/${category.title}`;
+  const categoryPath = `/categories/${category.id}`;
 
   return (
     <div className={st.categoryCard}>
