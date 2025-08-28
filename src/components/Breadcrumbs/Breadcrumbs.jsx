@@ -28,20 +28,12 @@ const Breadcrumbs = () => {
   const crumbs = pathSegments.map((crumb, index) => {
     currentLink += `/${crumb}`;
 
-    const isCategoryId = index === 1;
-    let crumbName;
-
-    if (isCategoryId) {
-      if (isLoading) {
-        crumbName = <span className={styles.skeletonCrumb}></span>;
-      } else if (categoryData?.category) {
-        crumbName = categoryData.category.title;
-      } else {
-        crumbName = crumb;
-      }
-    } else {
-      crumbName = formatCrumb(crumb);
-    }
+  const crumbName =
+  index === 1
+    ? isLoading
+      ? <span className={styles.skeletonCrumb}></span>
+      : categoryData?.category?.title || crumb
+    : formatCrumb(crumb);
 
     return (
       <div className={styles.crumb} key={crumb}>
