@@ -1,10 +1,10 @@
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
-import styles from "./Header.module.scss";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Navbar from "../Navbar/Navbar";
-import Button from "../Button/Button";
-import HeartIcon from "../../icons/HeartIcon";
 import CartIcon from "../../icons/CartIcon";
+import CustomHeartIcon from "../../icons/CustomHeartIcon";
+import styles from "./Header.module.scss";
 
 const Header = () => {
   return (
@@ -14,12 +14,18 @@ const Header = () => {
         <ThemeToggle />
       </div>
       <div className={styles.nav}>
-        <Button text={"1 day discount!"} />
+        <Link to="#">
+          <div className={styles.linkBtn}>1 day discount!</div>
+        </Link>
         <Navbar />
       </div>
       <div className={styles.headerActions}>
-        <HeartIcon fill="none" stroke="var(--text-color)" />
-        <CartIcon fill="none" strokePath="var(--text-color)" />
+        <Link to="#">
+          <CustomHeartIcon fill="none" stroke="var(--text-color)" />
+        </Link>
+        <Link to="#">
+          <CartIcon fill="none" strokePath="var(--text-color)" />
+        </Link>
       </div>
     </div>
   );
