@@ -1,5 +1,4 @@
-import { NavLink } from "react-router-dom";
-// import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 import styles from "./HeroSection.module.scss";
 
 const HeroSection = () => {
@@ -10,11 +9,9 @@ const HeroSection = () => {
           Amazing Discounts
           <br /> on Garden Products!
         </h1>
-        {/* <Link to="/all-sales">Check out<Link/>
-        <Button text={"Check out"} /> */}
-        <NavLink to="/all-sales">
+        <Link to="/all-sales">
           <div className={styles.linkBtn}>Check out</div>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );
