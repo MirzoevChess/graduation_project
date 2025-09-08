@@ -1,4 +1,4 @@
-import Hero from "../../components/Hero/Hero";
+import HeroSection from "../../components/HeroSection/HeroSection";
 import CategoriesSection from "../../components/CategoriesSection/CategoriesSection";
 import SaleSection from "../../components/SaleSection/SaleSection";
 import DiscountForm from "../../components/DiscountForm/DiscountForm";
@@ -6,7 +6,7 @@ import DiscountForm from "../../components/DiscountForm/DiscountForm";
 const Home = () => {
   return (
     <>
-      <Hero />
+      <HeroSection />
       <CategoriesSection />
       <DiscountForm />
       <SaleSection />

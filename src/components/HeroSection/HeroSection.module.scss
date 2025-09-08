@@ -1,0 +1,36 @@
+.hero {
+  background-image: url("../../assets/hero-bg.jpg");
+  height: 37.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  color: white;
+
+  .heroContent {
+    margin-left: 1.875rem;
+    font-size: 2.875rem;
+
+    h1 {
+      margin: 0;
+    }
+    .linkBtn {
+      margin-top: 1.875rem;
+      padding: 0.625rem 1.25rem;
+      background-color: #92a134;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.3125rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      display: inline-block;
+      border: 2px solid transparent;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        border: 2px solid #fff;
+      }
+    }
+  }
+}
