@@ -19,7 +19,7 @@ const Header = () => {
       </div>
       <div className={styles.headerActions}>
         <HeartIcon fill="none" stroke="var(--text-color)" />
-        <CartIcon fill="none" stroke="var(--text-color)"/>
+        <CartIcon fill="none" strokePath="var(--text-color)" />
       </div>
     </div>
   );

@@ -1,41 +1,29 @@
-import { NavLink } from "react-router-dom";
-import CategoryCard from "../CategoryCard/CategoryCard";
 import { useCategories } from "../../Hooks/useCategories";
-import st from "./CategoriesSection.module.scss";
+import CategoryCard from "../CategoryCard/CategoryCard";
+import HomePageSection from "../HomePageSection/HomePageSection";
 
 const CategoriesSection = () => {
-  
-  const { visibleCategories, show, handleLoad, loading, error } = useCategories(4);
+  const { visibleCategories, show, handleLoad, loading, error } =
+    useCategories(4);
 
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className={st.container}>
-      <div className={st.section}>
-        <div className={st.section__title}>
-          <h2>Categories</h2>
-          <div className={st.section__line_wrapper}>
-            <div className={st.section__line}></div>
-            <NavLink to="/categories">
-              <div className={st.section__btn}>All categories</div>
-            </NavLink>
-          </div>
-        </div>
-
-        <div className={st.section__list}>
-          {visibleCategories.length
-            ? visibleCategories.map((cat) => (
-                <CategoryCard
-                  key={cat.id}
-                  category={cat}
-                  onLoad={handleLoad}
-                  show={show}
-                />
-              ))
-            : loading}
-        </div>
-      </div>
-    </div>
+    <HomePageSection
+      sectionTitle="Categories"
+      linkPath="/categories"
+      linkTitle="All categories"
+      items={visibleCategories}
+      loading={loading}
+      renderItem={(cat) => (
+        <CategoryCard
+          key={cat.id}
+          category={cat}
+          onLoad={handleLoad}
+          show={show}
+        />
+      )}
+    />
   );
 };
 

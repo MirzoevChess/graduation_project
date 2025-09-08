@@ -1,8 +1,7 @@
 import Hero from "../../components/Hero/Hero";
 import CategoriesSection from "../../components/CategoriesSection/CategoriesSection";
-import DiscountForm  from "../../components/DiscountForm/DiscountForm"
-import styles from "./Home.module.scss";
-
+import SaleSection from "../../components/SaleSection/SaleSection";
+import DiscountForm from "../../components/DiscountForm/DiscountForm";
 
 const Home = () => {
   return (
@@ -10,6 +9,7 @@ const Home = () => {
       <Hero />
       <CategoriesSection />
       <DiscountForm />
+      <SaleSection />
     </>
   );
 };
