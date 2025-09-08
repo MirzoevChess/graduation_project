@@ -1,7 +1,7 @@
 import styles from "./ItemsGrid.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
 
-const ItemsGrid = ({ title, products, loading, error }) => {
+const ItemsGrid = ({ title, products }) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
