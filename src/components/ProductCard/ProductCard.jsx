@@ -16,13 +16,11 @@ const ProductCard = ({ product }) => {
       )}
       <div className={styles.productActions}>
         <HeartIcon fill="#FFFFFF" stroke="#424436" />
-        <CartIcon fill="#FFFFFF" stroke="#424436" />
+        <CartIcon fillPath="#FFFFFF" strokePath="#424436" />
       </div>
-      <img
-        src={product.fullImageUrl}
-        alt={product.title}
-        className={styles.productImage}
-      />
+      <div className={styles.productImageWrapper}>
+        <img src={product.fullImageUrl} alt={product.title} />
+      </div>
       <div className={styles.productInfo}>
         <h3 className={styles.title}>{product.title}</h3>
         <div className={styles.price}>
@@ -34,7 +32,7 @@ const ProductCard = ({ product }) => {
               <span className={styles.originalPrice}>${product.price}</span>
             </>
           ) : (
-            <span>${product.price}</span>
+            <span className={styles.singlePrice}>${product.price}</span>
           )}
         </div>
       </div>

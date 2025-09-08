@@ -21,19 +21,23 @@ const Breadcrumbs = () => {
   const { data: categoryData, isLoading } = useGetProductsByCategoryQuery(
     categoryId,
     {
-      skip: !categoryId,
+      // skip: !categoryId,
     }
   );
 
   const crumbs = pathSegments.map((crumb, index) => {
     currentLink += `/${crumb}`;
 
-  const crumbName =
-  index === 1
-    ? isLoading
-      ? <span className={styles.skeletonCrumb}></span>
-      : categoryData?.category?.title || crumb
-    : formatCrumb(crumb);
+    const crumbName =
+      index === 1 ? (
+        isLoading ? (
+          <span className={styles.skeletonCrumb}></span>
+        ) : (
+          categoryData?.category?.title || crumb
+        )
+      ) : (
+        formatCrumb(crumb)
+      );
 
     return (
       <div className={styles.crumb} key={crumb}>

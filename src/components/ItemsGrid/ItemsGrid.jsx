@@ -15,7 +15,7 @@ const ItemsGrid = ({ title, products, loading, error }) => {
           Discounted items
           <input type="checkbox" />
         </label>
-        <select></select>
+        <select>Filter</select>
       </div>
 
       <div className={styles.productsList}>

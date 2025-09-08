@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import { appRoutes } from "./routes/appRoutes";
 import Header from "./components/Header/Header";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
