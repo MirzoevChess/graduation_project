@@ -1,8 +1,11 @@
 import styles from "./ProductCard.module.scss";
 import CartIcon from "../../icons/CartIcon";
 import HeartIcon from "../../icons/HeartIcon";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const productPath = `/all-products/${product.id}`;
+
   return (
     <div className={styles.card}>
       {product.discont_price && (
@@ -21,21 +24,23 @@ const ProductCard = ({ product }) => {
       <div className={styles.productImageWrapper}>
         <img src={product.fullImageUrl} alt={product.title} />
       </div>
-      <div className={styles.productInfo}>
-        <h3 className={styles.title}>{product.title}</h3>
-        <div className={styles.price}>
-          {product.discont_price ? (
-            <>
-              <span className={styles.discountPrice}>
-                ${product.discont_price}
-              </span>
-              <span className={styles.originalPrice}>${product.price}</span>
-            </>
-          ) : (
-            <span className={styles.singlePrice}>${product.price}</span>
-          )}
+      <Link to={productPath} className={styles.productLink}>
+        <div className={styles.productInfo}>
+          <h3 className={styles.title}>{product.title}</h3>
+          <div className={styles.price}>
+            {product.discont_price ? (
+              <>
+                <span className={styles.discountPrice}>
+                  ${product.discont_price}
+                </span>
+                <span className={styles.originalPrice}>${product.price}</span>
+              </>
+            ) : (
+              <span className={styles.singlePrice}>${product.price}</span>
+            )}
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

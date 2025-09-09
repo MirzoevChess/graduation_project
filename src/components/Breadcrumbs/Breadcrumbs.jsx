@@ -21,7 +21,7 @@ const Breadcrumbs = () => {
   const { data: categoryData, isLoading } = useGetProductsByCategoryQuery(
     categoryId,
     {
-      // skip: !categoryId,
+      skip: !categoryId,
     }
   );
 

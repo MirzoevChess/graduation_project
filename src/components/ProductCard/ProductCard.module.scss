@@ -1,3 +1,8 @@
+.productLink {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
 .card {
   position: relative;
   max-width: 19.75rem;
@@ -31,7 +36,7 @@
     position: absolute;
     top: 1rem;
     left: 1.313rem;
-    background-color: var(--discount-bage-bg);
+    background-color: #f26d22;
     color: white;
     font-weight: bold;
     padding: 0.25rem 0.5rem;
@@ -49,6 +54,10 @@
   }
 
   .productInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     background-color: var(--product-card-bg);
     border-top: solid 0.0625rem var(--product-card-border);
     display: grid;
