@@ -1,13 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import categoriesReducer from "./features/categoriesSlice";
-import discountReducer from "./features/discountSlice"
 import { productsApi } from "./features/productsAPI";
+import categoriesReducer from "./features/categoriesSlice";
+import discountReducer from "./features/discountSlice";
+import favoritesReducer from "./features/favoritesSlice";
+
 
 const store = configureStore({
   reducer: {
+    [productsApi.reducerPath]: productsApi.reducer,
     categories: categoriesReducer,
     discount: discountReducer,
-    [productsApi.reducerPath]: productsApi.reducer,
+    favorites: favoritesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productsApi.middleware),
