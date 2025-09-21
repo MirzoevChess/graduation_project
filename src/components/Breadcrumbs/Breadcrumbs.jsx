@@ -12,6 +12,7 @@ const Breadcrumbs = () => {
   const location = useLocation();
 
   if (location.pathname === "/") return null;
+  if (location.pathname === "/404") return null;
 
   let currentLink = "";
 
