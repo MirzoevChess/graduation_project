@@ -12,6 +12,7 @@ const CategoryPage = lazy(() =>
 const ProductPage = lazy(() =>
   import("../pages/AllProducts/ProductPage/ProductPage")
 );
+const FavoritesPage = lazy(() => import("../pages/Favorites/Favorites"));
 
 export const appRoutes = [
   { id: 1, path: "/", element: <Home /> },
@@ -20,5 +21,6 @@ export const appRoutes = [
   { id: 4, path: "/all-products", element: <AllProducts /> },
   { id: 5, path: "/all-products/:productId", element: <ProductPage /> },
   { id: 6, path: "/all-sales", element: <AllSales /> },
-  { id: 7, path: "*", element: "404" },
+  { id: 7, path: "/favorites", element: <FavoritesPage /> },
+  { id: 8, path: "*", element: "404" },
 ];

@@ -20,7 +20,14 @@
   .headerActions {
     display: flex;
     align-items: baseline;
-    gap: 1.25rem;
+    gap: 1.5rem;
+
+    .heart {
+      width: 100%;
+    }
+    .cart {
+      width: 100%;
+    }
   }
 
   .nav {
