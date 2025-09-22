@@ -29,10 +29,13 @@ export const productsApi = createApi({
       query: (categoryId) => `/categories/${categoryId}`,
       transformResponse: (response) => ({
         category: response.category,
-        products: response.data.map((product) => ({
-          ...product,
-          fullImageUrl: `${API_URL}${product.image}`,
-        })),
+        // products: response.data.map((product) => ({
+        //   ...product,
+        //   fullImageUrl: `${API_URL}${product.image}`,
+        // })),
+        products: Array.isArray(response.data)
+          ? response.data.map((product) => ({ ...product, fullImageUrl: `${API_URL}${product.image}` }))
+          : [],
       }),
     }),
   }),
