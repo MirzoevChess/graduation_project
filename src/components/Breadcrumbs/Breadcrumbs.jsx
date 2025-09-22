@@ -34,7 +34,7 @@ const Breadcrumbs = () => {
         isLoading || !categoryData ? (
           <span className={styles.skeletonCrumb}></span>
         ) : (
-          categoryData.category.title
+          categoryData?.category?.title || crumb
         )
       ) : (
         crumb
