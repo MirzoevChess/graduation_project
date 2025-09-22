@@ -42,6 +42,11 @@
       font-weight: bold;
       .favIcon {
         cursor: pointer;
+        button {
+          all: unset;
+          display: inline-flex;
+          cursor: pointer;
+        }
       }
     }
     .priceSection {

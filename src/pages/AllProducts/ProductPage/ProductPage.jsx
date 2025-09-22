@@ -1,5 +1,7 @@
 import { useGetProductByIdQuery } from "../../../store/features/productsAPI";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../../store/features/favoritesSlice";
 import HeartIcon from "../../../icons/HeartIcon";
 import styles from "./ProductPage.module.scss";
 
@@ -10,6 +12,10 @@ const ProductPage = () => {
     isLoading,
     isError,
   } = useGetProductByIdQuery(productId);
+
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites.items);
+  const isFavorite = product ? favorites.includes(product.id) : false;
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading product</div>;
@@ -26,9 +32,25 @@ const ProductPage = () => {
       <div className={styles.actions}>
         <h1 className={styles.itemName}>
           {product.title}
-          <span className={styles.favIcon}>
-            <HeartIcon fill="none" stroke="var(--text-color)" />
-          </span>
+          <div className={styles.favIcon}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                dispatch(toggleFavorite(product.id));
+              }}
+              aria-pressed={isFavorite}
+              aria-label={
+                isFavorite ? "Remove from favorites" : "Add to favorites"
+              }
+            >
+              <HeartIcon
+                onClick={() => dispatch(toggleFavorite(product.id))}
+                fill={isFavorite ? "#92A134" : "none"}
+                stroke={isFavorite ? "#92A134" : "var(--text-color)"}
+              />
+            </button>
+          </div>
         </h1>
 
         <div className={styles.priceSection}>
@@ -53,9 +75,9 @@ const ProductPage = () => {
                 <path
                   d="M5 12H19"
                   stroke="#8B8B8B"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
@@ -71,16 +93,16 @@ const ProductPage = () => {
                 <path
                   d="M5 12H19"
                   stroke="#8B8B8B"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M12 5V19"
                   stroke="#8B8B8B"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>
