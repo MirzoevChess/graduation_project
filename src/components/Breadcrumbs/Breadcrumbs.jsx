@@ -11,13 +11,10 @@ const formatCrumb = (crumb) => {
 const Breadcrumbs = () => {
   const location = useLocation();
 
-  if (location.pathname === "/") return null;
-  if (location.pathname === "/404") return null;
-
   let currentLink = "";
 
   const pathSegments = location.pathname.split("/").filter(Boolean);
-  const categoryId = pathSegments[1];
+  const categoryId = pathSegments[1] || null;
 
   const { data: categoryData, isLoading } = useGetProductsByCategoryQuery(
     categoryId,
@@ -26,19 +23,25 @@ const Breadcrumbs = () => {
     }
   );
 
+  if (location.pathname === "/" || location.pathname === "/404") return null;
+
   const crumbs = pathSegments.map((crumb, index) => {
     currentLink += `/${crumb}`;
 
-    const crumbName =
-      index === 1 ? (
-        isLoading ? (
+    let crumbName;
+    if (index === 1) {
+      crumbName = categoryId ? (
+        isLoading || !categoryData ? (
           <span className={styles.skeletonCrumb}></span>
         ) : (
-          categoryData?.category?.title || crumb
+          categoryData.category.title
         )
       ) : (
-        formatCrumb(crumb)
+        crumb
       );
+    } else {
+      crumbName = formatCrumb(crumb);
+    }
 
     return (
       <div className={styles.crumb} key={crumb}>
